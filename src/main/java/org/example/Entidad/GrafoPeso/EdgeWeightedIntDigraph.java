@@ -31,8 +31,8 @@ public class EdgeWeightedIntDigraph {
         if (e.to<0 || e.to>=V){
             throw new IllegalArgumentException();
         }
-        adj[e.from].add(e);
         E++;
+        adj[e.from].add(e);
     }
 
     public List<DirectEdge> adj (int v){

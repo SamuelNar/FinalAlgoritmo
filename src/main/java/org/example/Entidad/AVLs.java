@@ -21,6 +21,7 @@ public class AVLs<T extends Comparable<? super T>> implements SortedSet<T>{
         }
         return x.height;
     }
+
     public int BalanceFactor(NodeAVL<T> x){
         return height(x.left) - height(x.right);
     }
@@ -159,12 +160,12 @@ public class AVLs<T extends Comparable<? super T>> implements SortedSet<T>{
     }
 
 
-    public NodeAVL<T> removeMin(NodeAVL<T> x,T key){
+    public NodeAVL<T> remove(NodeAVL<T> x,T key){
         int cmp = key.compareTo(x.key);
         if (cmp < 0){
-            x.left = removeMin(x.left,key);
+            x.left = remove(x.left,key);
         } else if (cmp > 0) {
-            x.right = removeMin(x.right,key);
+            x.right = remove(x.right,key);
         }else {
             if (x.left==null){
                 return x.right;

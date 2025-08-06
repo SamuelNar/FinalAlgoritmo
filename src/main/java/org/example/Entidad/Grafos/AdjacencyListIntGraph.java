@@ -6,9 +6,9 @@ import java.util.List;
 
 public class AdjacencyListIntGraph implements IntGraph{
 
-    private int V;
+    private final int V;
     private int E;
-    private List<Integer>[] adj;
+    private final List<Integer>[] adj;
     boolean[] marked;
 
     public AdjacencyListIntGraph(int V){

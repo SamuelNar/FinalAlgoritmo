@@ -14,7 +14,6 @@ public class BstSearch<T extends Comparable<T>> implements SortedSet<T> {
         size=0;
     }
 
-
     public boolean isBST(NodeBST<T> x, T min, T max){
         if (x==null){
             return true;
