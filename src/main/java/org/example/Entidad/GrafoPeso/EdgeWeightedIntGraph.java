@@ -3,14 +3,14 @@ package org.example.Entidad.GrafoPeso;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EdgeWeightedIntDigraph {
-    private final int V;
+public class EdgeWeightedIntGraph {
+      private final int V;
     private int E;
 
-    private final List<DirectEdge>[] adj;
+    private final List<Edge>[] adj;
 
     @SuppressWarnings("unchecked")
-    public EdgeWeightedIntDigraph(int V) {
+    public EdgeWeightedIntGraph(int V) {
 
         if (V < 0) {
             throw new IllegalArgumentException(
@@ -45,7 +45,7 @@ public class EdgeWeightedIntDigraph {
     /*
      * Agrega una arista al grafo.
      */
-    public void addEdge(DirectEdge e) {
+    public void addEdge(Edge e) {
 
         if (e == null) {
             throw new IllegalArgumentException(
@@ -53,21 +53,45 @@ public class EdgeWeightedIntDigraph {
             );
         }
 
-        validateVertex(e.from);
-        validateVertex(e.to);
+        int v = e.either();
+        int w = e.other(v);
+        validateVertex(v);
+        validateVertex(w);
 
-        adj[e.from].add(e);
+        adj[v].add(e);
+        adj[w].add(e);
         E++;
     }
 
     /*
      * Devuelve las aristas que salen del vértice v.
      */
-    public List<DirectEdge> adj(int v) {
+    public List<Edge> adj(int v) {
 
         validateVertex(v);
 
         return adj[v];
+    }
+
+      public List<Edge> edges() {
+
+        List<Edge> allEdges = new LinkedList<>();
+
+        for (int v = 0; v < V; v++) {
+
+            for (Edge e : adj[v]) {
+
+                /*
+                 * Agregamos la arista solamente desde
+                 * uno de sus extremos para no repetirla.
+                 */
+                if (e.other(v) > v) {
+                    allEdges.add(e);
+                }
+            }
+        }
+
+        return allEdges;
     }
 
     private void validateVertex(int v) {

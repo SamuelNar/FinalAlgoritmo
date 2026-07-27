@@ -159,7 +159,7 @@ public class BstSearch<T extends Comparable<T>> implements SortedSet<T> {
         if (x.rigth == null){
             return x;
         }else {
-            return min(x.rigth);
+            return max(x.rigth);
         }
     }
 

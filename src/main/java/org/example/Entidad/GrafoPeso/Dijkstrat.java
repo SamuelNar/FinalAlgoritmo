@@ -5,8 +5,8 @@ import java.util.PriorityQueue;
 
 public class Dijkstrat {
     private double[] distTo;        // distancias más cortas desde el origen
-    private DirectEdge[] edgeTo;
-    private final IndexMinPQ<Double> pq;
+    private DirectEdge[] edgeTo;    // última arista en el camino más corto
+    private final IndexMinPQ<Double> pq; // cola de prioridad de vértices con distancias más cortas conocidas
 
     public Dijkstrat(EdgeWeightedIntDigraph G, int s) {
             if (s<0 || s>=G.V()){

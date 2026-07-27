@@ -12,8 +12,6 @@ public class DepthFirtsSearch {
     private int count;
     private int s;
 
-
-
     //camino mas corto el coutn es para contar los nodos
     public DepthFirtsSearch(AdjacencyListIntGraph G, int s) {
         this.s = s;

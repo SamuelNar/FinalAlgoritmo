@@ -10,4 +10,14 @@ public class DirectEdge {
         this.to=to;
         this.weight=weight;
     }
+
+     @Override
+    public String toString() {
+
+        return from
+                + " -> "
+                + to
+                + " peso: "
+                + weight;
+    }
 }
